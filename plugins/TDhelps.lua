@@ -102,15 +102,19 @@ local permagbot2 = [[
 🔒#lock Arabic
 🔒#unlock Arabic
 〰〰〰〰〰
-💬 قفل اعضا
-کاربران نمیتوانند وارد گروه شوند
-🔒#lock member
-🔒#unlock member
+💬 ققفل انگلیسی
+🔒#lock english
+🔒#unlock english
 〰〰〰〰〰
 💬 قفل راستچین
 زبان فارسی و عربی کار نخواهد کرد
 🔒#lock rtl
 🔒#unlock rtl
+〰〰〰〰〰
+💬 قفل اعضا
+کاربران نمیتوانند وارد گروه شوند
+🔒#lock member
+🔒#unlock member
 〰〰〰〰〰
 💬 قفل استیکر
 🔒#lock sticker
@@ -119,6 +123,24 @@ local permagbot2 = [[
 💬 قفل شماره تماس
 🔒#lock contacts
 🔒#unlock contacts
+〰〰〰〰〰
+💬 قفل ایموجی
+🔒#lock emoji
+🔒#unlock emoji
+〰〰〰〰〰
+💬 قفل موزیک
+🔒#lock music
+🔒#unlock music
+〰〰〰〰〰
+💬 قفل ریپلی
+🔒#lock reply
+🔒#unlock reply
+〰〰〰〰〰
+💬 قفل ربات
+🔒 '!antibot enable: Enable Anti-bot on current chat',
+🔒 '!antibot disable: Disable Anti-bot on current chat',
+🔒 '!antibot allow <botId>: Allow <botId> on this chat',
+🔒 '!antibot disallow <botId>: Disallow <botId> on this chat'
 〰〰〰〰〰
 💬 ربات سختگیرانه شود
 ربات سختگیرانه میشود و کاربر خطا کار را پاک میکند - پیشنهاد میشود فعال نکنید
@@ -175,57 +197,6 @@ local permagbot2 = [[
 🔒#mutelist : 
 
 ]]
-local permagbot3 = [[
-➖➖➖➖➖➖➖
-✔️لیست دستورات فان:
-➖➖➖➖➖➖➖
-💢》#fal
-گرفتن فال 
-
-💢》#استیکر کلمه
-مثال : استیکر پرمگ
-❔نوشتن متن بر روی استیکر
-
-💢》#جستجوی (متن)
-❔جستجو در اپارات
-
-💢》#نوشتن (کلمه)
-❔نوشتن اسم یا کلمه با 100 فونت زیبا
-
-💢》#هواشناسی (شهر)
-❔هواشناسی(بجای شهر نام شهر مورد نظر را به انگلیسی بنویسید)
-
-💢》#زمان
-❔زمان بصورت استیکر
-
-💢》#اذان (شهر)
-❔زمان تمامی اذان های یک شهر(جای شهر نام شهر مورد نظر رابه انگلیسی بنویسید)
-
-💢》#ترجمه انگلیسی (متن)
-❔ترجمه فارسی به انگلیسی
-
-
-💢》#گیف (کلمه)
-❔کلمه یا اسم شما بصورت گیف
-
-💢》#ماشین*حساب عدد(-+×÷)عدد
-❔حساب چهار عمل اصلی ریاضی
-
-
-💢》#کوتاه کردن (لینک)
-کوتاه کردن لینک شما(بجای (لینک) لینک خود را قرار دهید)
-
-💢》#معادل (مقدارپول)
-❔مقدار ارز در بازار
-
-💢》#عکس نوشته (متن)
-❔کلمه یا اسم شما بصورت عکس
-
-💢》#voice متن
-❔تبدیل متن به صدا ، کافیست جای متن ، متن انگلیسی بزنید
-
-➰بجای کلمه یا متن موارد دلخواه خود را بنویسید.
-]]
 
 local permagbot7 = [[
 
@@ -234,8 +205,7 @@ local permagbot7 = [[
 ✏️ دستورات:
 ☆دستورات قفلی
 🎗》#قفل
-☆دستورات فان
-🎗》#فان
+
 ☆دستورات مدیریتی
 🎗》#مدیریت
 ☆حذف و نصب پلاگین ها
@@ -289,16 +259,34 @@ mesal : pattern azan
 
 ...
 ]]
+local permagbot9 = [[
+
+شارژ سیستم
+برای شارژ ربات از دستورات زیر استفاده میشود
+
+ "^(setexpire) (.*)$",
+		"^(setexp)_(.*)_(.*)$",
+	  "^(expire)$",
+		"^(charge)$",
+		"^[!#/](charge)$",
+		"^[!#/](setexpire) (.*)$",
+		"^[!#/](setexp)_(.*)_(.*)$",
+	"^[!#/](expire)$",
+
+...
+]]
+
+
     if matches[1] == 'مدیریت' and is_momod(msg) then
         return permagbot  
   elseif matches[1] == 'قفل' and is_momod(msg) then
 		return permagbot2
-  elseif matches[1] == 'فان' and is_momod(msg) then
-		return permagbot3
   elseif matches[1] == 'help' and is_momod(msg) or matches[1] == 'راهنما' and is_momod(msg) then
 		return permagbot7
   elseif matches[1] == 'پلاگین' and is_momod(msg) then
 		return permagbot8
+  elseif matches[1] == 'شارژ' and is_momod(msg) then
+		return permagbot9	
   end
 end
 
@@ -309,9 +297,9 @@ return {
     '^[!#/](مدیریت)$',
     '^[!#/](قفل)$',
 	'^[!#/](پلاگین)$',
-    '^[!#/](فان)$',
     '^[!#/](help)$',
     '^[!#/](راهنما)$',
+	'^[!#/](شارژ)$'
       },
       run = run,
 }

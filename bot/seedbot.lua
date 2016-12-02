@@ -254,7 +254,18 @@ function create_config( )
 	"fal",
 	"muteall",
 	"security",
-	"lock_inline"
+	"lock_inline",
+	"anti-bot",
+	"antiemoji",
+	"expire1",
+	"id-by-reply",
+	"lock_english",
+	"lock_fosh",
+	"lock_media",
+	"lock_reply",
+	"music",
+	"warn"
+	"",		
     },
     sudo_users = {299453239,182255045,0,tonumber(our_id)},--Sudo users
     moderation = {data = 'data/moderation.json'},
